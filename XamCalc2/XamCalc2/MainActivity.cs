@@ -12,7 +12,7 @@ namespace XamCalc2
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity, IOnClickListener
     {
-        private TextView _txtv1, _txtv2;
+        private TextView _txtv1;
 
         private Button btn_0, btn_00, btn_dot, btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9;
         private Button btn_minuse, btn_plus, btn_divide, btn_multi, btn_back, btn_c, btn_equal;
@@ -29,7 +29,6 @@ namespace XamCalc2
             SetContentView(Resource.Layout.activity_main);
 
             _txtv1 = FindViewById<TextView>(Resource.Id.txtv1);
-            _txtv2 = FindViewById<TextView>(Resource.Id.txtv2);
 
             btn_0 = FindViewById<Button>(Resource.Id.btn_0);
             btn_0.SetOnClickListener(this);
@@ -161,6 +160,27 @@ namespace XamCalc2
                 _txtv1.Text = "";
             }
 
+            if (v.Id == Resource.Id.btn_minuse)
+            {
+                mchar = "-";
+                temp1 = Convert.ToDecimal(_txtv1.Text);
+                _txtv1.Text = "";
+            }
+
+            if (v.Id == Resource.Id.btn_multi)
+            {
+                mchar = "*";
+                temp1 = Convert.ToDecimal(_txtv1.Text);
+                _txtv1.Text = "";
+            }
+
+            if (v.Id == Resource.Id.btn_divide)
+            {
+                mchar = "/";
+                temp1 = Convert.ToDecimal(_txtv1.Text);
+                _txtv1.Text = "";
+            }
+
             if (v.Id == Resource.Id.btn_equal)
             {
                 temp2 = Convert.ToDecimal(_txtv1.Text);
@@ -168,7 +188,28 @@ namespace XamCalc2
                 {
                     _txtv1.Text = (temp1 + temp2).ToString();
                 }
+                if (mchar == "-")
+                {
+                    _txtv1.Text = (temp1 - temp2).ToString();
+                }
+                if (mchar == "*")
+                {
+                    _txtv1.Text = (temp1 * temp2).ToString();
+                }
+                if (mchar == "/")
+                {
+                    _txtv1.Text = (temp1 / temp2).ToString();
+                }
+
                 //_txtv1.Text = "";
+            }
+
+            if (v.Id == Resource.Id.btn_c)
+            {
+                temp1 = 0;
+                temp2 = 0;
+                mchar = "";
+                _txtv1.Text = "";
             }
         }
     }
