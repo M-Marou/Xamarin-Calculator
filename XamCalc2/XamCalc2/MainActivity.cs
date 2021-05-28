@@ -68,7 +68,7 @@ namespace XamCalc2
 
 
             btn_plus = FindViewById<Button>(Resource.Id.btn_plus);
-            btn_0.SetOnClickListener(this);
+            btn_plus.SetOnClickListener(this);
 
             btn_minuse = FindViewById<Button>(Resource.Id.btn_minuse);
             btn_minuse.SetOnClickListener(this);
